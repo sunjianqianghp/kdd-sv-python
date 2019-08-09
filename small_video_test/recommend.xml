@@ -1,0 +1,3699 @@
+<recommenderconfig reccost_max_ms="400" recmax_concur="225">
+    <!-- select block  start-->
+    <block name="select_hotest">
+        <recdoc_select doc_source="hotest" percent="1.0" candidate_size="100">
+            <!--<param key="start_pos_randm" value="1"/>-->
+            <!--<recdoc_process process_name="fm_predict_rank">-->
+            <!--<param key="client_name" value="fm_time_predict_client"/>-->
+            <!--</recdoc_process>-->
+        </recdoc_select>
+    </block>
+
+    <block name="select_hotest_v3">
+        <recdoc_select doc_source="hotest_v3" percent="1.0" candidate_size="100">
+            <!--<param key="start_pos_randm" value="1"/>-->
+        </recdoc_select>
+    </block>
+
+    <block name="select_hotest_by_one_cate">
+        <recdoc_select doc_source="hotest_by_one_cate" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_hotest_by_one_cate_v3">
+        <recdoc_select doc_source="hotest_by_one_cate_v3" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_hotest_bobo">
+        <recdoc_select doc_source="hotest_by_one_cate" percent="1.0" candidate_size="100">
+            <param key="cate" value="1002"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_hotest_kuaishou">
+        <recdoc_select doc_source="hotest_by_one_cate" percent="1.0" candidate_size="100">
+            <param key="cate" value="1002"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_hotest_small_video">
+        <recdoc_select doc_source="hotest_small_video" percent="1.0" candidate_size="100">
+            <!--            <param key="excludeCates" value="107"/>-->
+        </recdoc_select>
+    </block>
+
+    <block name="select_dl_hotest_small_video">
+        <recdoc_select doc_source="hotest_small_video" percent="1.0" candidate_size="100">
+            <param key="specifiedCates" value="100"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_explore">
+        <recdoc_select doc_source="explore" percent="1.0" candidate_size="100"/>
+    </block>
+
+    <block name="select_explore_v2">
+        <recdoc_select doc_source="explore" percent="1.0" candidate_size="100"/>
+        <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="0.625" candidate_size="50">
+                <param key="cate" value="2"/>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="0.125" candidate_size="50">
+                <param key="cate" value="9"/>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="0.125" candidate_size="50">
+                <param key="cate" value="3"/>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="0.125" candidate_size="50">
+                <param key="cate" value="15"/>
+            </recdoc_select>
+            <recdoc_process process_name="shuffle"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_bottom">
+
+        <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+            <recdoc_select doc_source="ctr_high" percent="0.75" candidate_size="100">
+            </recdoc_select>
+            <recdoc_select doc_source="ctr_new" percent="0.25" candidate_size="100">
+            </recdoc_select>
+            <recdoc_process process_name="shuffle"/>
+        </recdoc_select>
+        <recdoc_select doc_source="hotest" percent="1.0" candidate_size="100"/>
+        <recdoc_select doc_source="hotest_v3" percent="1.0" candidate_size="100"/>
+
+        <recdoc_select doc_source="explore" percent="1.0" candidate_size="100"/>
+        <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="0.625" candidate_size="50">
+                <param key="cate" value="2"/>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="0.125" candidate_size="50">
+                <param key="cate" value="9"/>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="0.125" candidate_size="50">
+                <param key="cate" value="3"/>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="0.125" candidate_size="50">
+                <param key="cate" value="15"/>
+            </recdoc_select>
+            <recdoc_process process_name="shuffle"/>
+        </recdoc_select>
+
+    </block>
+
+    <block name="select_explore_by_set_cate_or_one_cate">
+        <recdoc_select doc_source="explore_by_cates" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_explore_small_video">
+        <recdoc_select doc_source="explore_small_video" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_dl_explore_small_video">
+        <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+            <param key="cate" value="100"/>
+        </recdoc_select>
+    </block>
+
+
+    <block name="select_explore_album">
+        <recdoc_select doc_source="explore_album" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_random_by_set_cate_or_one_cate">
+        <recdoc_select doc_source="random_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+            <param key="recdoc_process" value="shuffle"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_random_album">
+        <recdoc_select doc_source="random_album" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_random_album_ep1">
+        <recdoc_select doc_source="random_album_ep1" percent="1.0" candidate_size="100">
+            <recdoc_process process_name="shuffle"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_random_album_ep1_by_one_cate">
+        <recdoc_select doc_source="random_album_ep1_by_one_cate" percent="1.0" candidate_size="100">
+            <recdoc_process process_name="shuffle"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_qukan_hotest">
+        <recdoc_select doc_source="qukan_hotest" percent="1.0" candidate_size="100">
+            <!--<param key="start_pos_randm" value="1"/>-->
+        </recdoc_select>
+    </block>
+
+    <block name="select_qukan_hotest_by_one_cate">
+        <recdoc_select doc_source="qukan_hotest_by_one_cate" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_qukan_item_cf">
+        <recdoc_select doc_source="qukan_item_cf" percent="1.0" candidate_size="400">
+            <param key="similar_doc_client" value="doc_w2v_similar_list"/>
+            <param key="user_read_client_name" value="userread_from_feature_server"/>
+            <param key="read_video_num" value="10"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_user_keywords_recall">
+        <recdoc_select doc_source="user_keywords_recall" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_word2vec_recall">
+        <recdoc_select doc_source="word2vec_item_cf" percent="1.0" candidate_size="200">
+        </recdoc_select>
+    </block>
+
+    <block name="select_vote_rank_recall">
+        <recdoc_select doc_source="vote_rank_recall" percent="1.0" candidate_size="200">
+        </recdoc_select>
+    </block>
+
+    <block name="select_cf_feedback">
+        <recdoc_select doc_source="cf_feedback" percent="1.0" candidate_size="50">
+            <param key="user_read_client_name" value="userread_from_feature_server"/>
+            <param key="doc_client_name" value="cf_cache_db"/>
+            <param key="top_n" value="10"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_cf_feedback_similar">
+        <recdoc_select doc_source="cf_feedback_similar" percent="1.0" candidate_size="50">
+            <param key="user_read_client_name" value="userread_from_feature_server"/>
+            <param key="doc_client_name" value="cf_cache_db"/>
+            <param key="top_n" value="10"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_user_prefere">
+        <recdoc_select doc_source="user_prefere" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_recently_read_cate">
+        <recdoc_select doc_source="recently_read_cate" percent="1.0" candidate_size="100"/>
+    </block>
+
+    <block name="select_set_top">
+        <recdoc_select doc_source="set_top" percent="1.0" candidate_size="100">
+        </recdoc_select>
+    </block>
+
+    <block name="select_hand_list">
+        <recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="100">
+            <param key="name" value="list_hand"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_dtu_lt_2k_pct_long_term">
+        <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+            <recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="4">
+                <param key="name" value="list_top20"/>
+            </recdoc_select>
+
+            <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+                <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="100">
+                    <param key="name" value="list_pct4"/>
+                </recdoc_select>
+                <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="100">
+                    <param key="name" value="list_pct_top_merge"/>
+                </recdoc_select>
+                <recdoc_process process_name="shuffle"/>
+            </recdoc_select>
+
+            <recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="100">
+                <param key="name" value="list_pct_top_merge"/>
+            </recdoc_select>
+
+            <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+                <recdoc_select doc_source="ctr_high" percent="0.75" candidate_size="100">
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new" percent="0.25" candidate_size="100">
+                </recdoc_select>
+                <recdoc_process process_name="shuffle"/>
+            </recdoc_select>
+            <recdoc_select doc_source="hotest" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="hotest_v3" percent="1.0" candidate_size="100"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_dtu_lt_2k_pct_long_term_daily_update">
+        <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+            <recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="4">
+                <param key="name" value="list_top20"/>
+            </recdoc_select>
+
+            <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+                <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="100">
+                    <param key="name" value="list_weekly_pct"/>
+                </recdoc_select>
+                <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="100">
+                    <param key="name" value="list_pct_top_merge"/>
+                </recdoc_select>
+                <recdoc_process process_name="shuffle"/>
+            </recdoc_select>
+
+            <recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="100">
+                <param key="name" value="list_pct_top_merge"/>
+            </recdoc_select>
+
+            <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+                <recdoc_select doc_source="ctr_high" percent="0.75" candidate_size="100">
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new" percent="0.25" candidate_size="100">
+                </recdoc_select>
+                <recdoc_process process_name="shuffle"/>
+            </recdoc_select>
+            <recdoc_select doc_source="hotest" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="hotest_v3" percent="1.0" candidate_size="100"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_dtu_lt_2k_linear_pct">
+        <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+            <recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="4">
+                <param key="name" value="list_top20"/>
+            </recdoc_select>
+
+            <recdoc_select doc_source="union" percent="1.0" candidate_size="200">
+                <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="100">
+                    <param key="name" value="list_weekly_pct"/>
+                </recdoc_select>
+                <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="100">
+                    <param key="name" value="list_linear_pct_top"/>
+                </recdoc_select>
+                <recdoc_process process_name="shuffle"/>
+            </recdoc_select>
+
+            <recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="100">
+                <param key="name" value="list_linear_pct_top"/>
+            </recdoc_select>
+
+            <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+                <recdoc_select doc_source="ctr_high" percent="0.75" candidate_size="100">
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new" percent="0.25" candidate_size="100">
+                </recdoc_select>
+                <recdoc_process process_name="shuffle"/>
+            </recdoc_select>
+            <recdoc_select doc_source="hotest" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="hotest_v3" percent="1.0" candidate_size="100"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_hotest_union">
+        <recdoc_select name="union_hottest" doc_source="union" percent="1.0" candidate_size="100">
+            <recdoc_select name="hand_list_by_set_list_top20" doc_source="hand_list_by_set" percent="1.0" candidate_size="4">
+                <param key="name" value="list_top20"/>
+            </recdoc_select>
+            <recdoc_select name="hand_list_by_set_list_pct3" doc_source="hand_list_by_set" percent="1.0" candidate_size="100">
+                <param key="name" value="list_pct3"/>
+            </recdoc_select>
+            <recdoc_select name="union_ctr" doc_source="union" percent="1.0" candidate_size="100">
+                <recdoc_select name="ctr_high" doc_source="ctr_high" percent="0.75" candidate_size="100">
+                </recdoc_select>
+                <recdoc_select name="ctr_new" doc_source="ctr_new" percent="0.25" candidate_size="100">
+                </recdoc_select>
+                <recdoc_process process_name="shuffle"/>
+            </recdoc_select>
+            <recdoc_select name="hotest" doc_source="hotest" percent="1.0" candidate_size="100"/>
+            <recdoc_select name="hotest_v3" doc_source="hotest_v3" percent="1.0" candidate_size="100"/>
+        </recdoc_select>
+    </block>
+
+    <block name="select_channel_cate_host">
+        <recdoc_select doc_source="union" percent="1.0" candidate_size="100">
+            <recdoc_select doc_source="hotest_by_one_cate" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="hotest_by_one_cate_v3" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="qukan_hotest_by_one_cate" percent="1.0" candidate_size="100">
+            </recdoc_select>
+        </recdoc_select>
+    </block>
+
+    <block name="select_107_small_video">
+        <recdoc_select doc_source="hotest_by_one_cate" percent="1.0" candidate_size="100">
+            <param key="cate" value="107"/>
+            <param key="durationLimit" value="5"/>
+            <param key="dateEndTS" value="1545839999"/>
+            <!-- 2018-12-26 23:59:59之前的视频，之后的视频不要，暂时测试用，后续可能更改-->
+        </recdoc_select>
+    </block>
+
+    <block name="select_topic_hot_video">
+        <recdoc_select doc_source="user_topic_prefer_recall" percent="1.0" candidate_size="100">
+            <param key="include_dishu" value="1"/>
+        </recdoc_select>
+    </block>
+
+    <!-- select block end -->
+
+    <rec_data_flows>
+        <include>flow_8vs1.xml</include>
+        <include>flow_8vs2.xml</include>
+        <include>flow_8vs4.xml</include>
+        <include>flow_8vs8.xml</include>
+        <include>flow_channel.xml</include>
+        <include>flow_fallbak.xml</include>
+        <rec_personal_flow candidate_size="100" name="exp_dtu1_exp_0123">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu1_exp_0123"/>
+            </recdoc_select>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.875"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu1_exp_4567">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu1_exp_4567"/>
+            </recdoc_select>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.875"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu1_exp_89ab">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu1_exp_89ab"/>
+            </recdoc_select>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.875"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu1_exp_cdef">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu1_exp_cdef"/>
+            </recdoc_select>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.875"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+        </rec_personal_flow>
+
+        <!--八出四-->
+        <!-- FM排序+召回策略和8vs2的cd两组相似，去掉了ICF和word2vect -->
+        <rec_personal_flow candidate_size="100" name="exp_8vs4_fm">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="50">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="50">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="50">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="50">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select name="keywords_rt" doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="6"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="explore_video" value="1"/>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1000">
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_prefere_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="video_coldboot"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="fm_rank">
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_process"/>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!-- FM排序+召回策略和8vs2的cd两组相似，增加ICF和word2vect，w2v严格限制低俗 -->
+        <rec_personal_flow candidate_size="100" name="exp_8vs4_fm_new_w2v_new_icf">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="50">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="50">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="50">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="50">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <!-- w2v_new_redis_db-->
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="150">
+                <param key="w2v_db_name" value="w2v_new_redis_db"/>
+                <param key="from" value="94"/>
+            </recdoc_select>
+            <!--ICF_added-->
+            <recdoc_select doc_source="cf_feedback" percent="0.25" candidate_size="150">
+                <param key="icf_db_name_new" value="icf_new_redis_db"/>
+                <param key="disu_suppress_flag" value="2"/>
+                <param key="from" value="99"/>
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select name="keywords_rt" doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="6"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="explore_video" value="1"/>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1200">
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_prefere_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+                <!--w2v added-->
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <!--ICF_added-->
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="cf_feedback"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="video_coldboot"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="fm_rank">
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_process"/>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu2_exp_0123">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu2_exp_0123"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+
+            <result_process process_name="cross_8vs4"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu2_exp_4567">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu2_exp_4567"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <!--<result_process process_name="disu_relate_locate">-->
+            <!--<param key="location" value="0"/>-->
+            <!--<param key="cates" value="1001-1999"/>-->
+            <!--</result_process>-->
+
+            <result_process process_name="cross_8vs4"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu2_exp_89ab">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu2_exp_89ab"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <!--<result_process process_name="cross_cate"/>-->
+
+            <result_process process_name="cross_8vs4"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu2_exp_cdef">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu2_exp_cdef"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+
+            <result_process process_name="cross_8vs4"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_cd_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_cd_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+            <result_process process_name="replace_video"/>
+        </rec_personal_flow>
+
+        <!--八出二-老用户-->
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_23">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_23"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_23_disu">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_23_disu"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_45">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_45"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_45_disu">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_45_disu"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_67">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_67"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <!--<result_process process_name="cross_cate"/>-->
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_89">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_89"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_ab">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_ab"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+            <result_process process_name="replace_video">
+                <param key="replace_key_in_mysql" value="map_replace_video_2"/>
+            </result_process>
+
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_cd">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_cd"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu3_exp_ef">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu3_exp_ef"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_23_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_23_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_45_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_45_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_67_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_67_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_67_new_fm">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="50">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="50">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="50">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="50">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select name="keywords_rt" doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1000">
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_prefere_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="fm_rank">
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_process">
+                <param key="explore_new_doc_adjust" value="0" />
+            </end_process>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_89_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_89_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_ab_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_ab_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_cd_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_cd_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_ef_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_ef_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_exp_8vs1_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_exp_8vs1_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_23">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_23"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_45">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_45"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_67">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_67"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_89">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_89"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_ab">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_ab"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_cd">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_cd"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_exp_ef">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_8vs1_exp_ef"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_exp_8vs1">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_dtu4_exp_8vs1"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!--8出0 新用户-->
+        <rec_personal_flow candidate_size="100" name="exp_8vs0_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_8vs0_new"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!--8出0  -->
+        <rec_personal_flow candidate_size="100" name="exp_8vs0">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_8vs0"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_comment">
+            <recdoc_select doc_source="hand_list_by_set" percent="1" candidate_size="50">
+                <param key="name" value="list_comment_personal"/>
+            </recdoc_select>
+            <import name="select_hotest_union" percent="1.0"/>
+        </rec_personal_flow>
+
+        <!--其他-->
+        <rec_personal_flow candidate_size="100" name="exp_fm">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="50">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="50">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="50">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="50">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select name="keywords_rt" doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="6"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="explore_video" value="1"/>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1000">
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_prefere_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="video_coldboot"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="fm_rank">
+            </rank_process>
+
+            <end_process name="end_fm_process"/>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_dtu4_8vs1_fm_pct_new_prior_list_m4">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="50">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+
+            <recdoc_select name="list_8vs1_fix_hot_m4" doc_source="hand_list_by_set" percent="0.5" candidate_size="50">
+                <param key="name" value="list_8vs1_fix_hot_m4"/>
+            </recdoc_select>
+
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="50">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="50">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="50">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="docselect_ee" percent="0.25" candidate_size="50">
+                <param key="read_threshold" value="2"/>
+                <param key="vshow_threshold" value="10"/>
+                <param key="explore_cum_cate_limit" value="6"/>
+                <param key="explore_cate_limit" value="6"/>
+                <param key="user_prefer_score_limit" value="0.05"/>
+                <param key="decay_ee_power" value="1"/>
+                <param key="recall_num_per_cate" value="30"/>
+                <param key="recall_cap" value="210" />
+                <param key="cate_explore_score_limit" value="0.09" />
+                <param key="cate_explore_score_limit_decay" value="1" />
+                <param key="ee_prior_handlist" value="list_8vs1_fix_hot_m4" />
+            </recdoc_select>
+            <recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select name="keywords_rt" doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <!--<recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="50">-->
+            <!--<param key="cates" value="1-99"/>-->
+            <!--<param key="explore_video" value="1"/>-->
+            <!--</recdoc_select>-->
+
+            <merge_process name="weight_merge" total="1000">
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="list_8vs1_fix_hot_m4"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_prefere_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <!--<slot>-->
+                <!--<param key="weight" value="50"/>-->
+                <!--<param key="candidate" value="video_coldboot"/>-->
+                <!--</slot>-->
+            </merge_process>
+
+            <rank_process name="fm_rank">
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_process">
+                <param key="ee_adjust" value="1" />
+                <param key="explore_new_doc_adjust" value="0" />
+            </end_process>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!--其他: add_150_ICFRecall_based_on_old_word2vect  ab_e,ab_f-->
+        <rec_personal_flow candidate_size="100" name="exp_fm_old_word2vect_new_icf">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="50">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="50">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="50">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="50">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <!-- w2v_new_redis_db-->
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="150">
+                <param key="w2v_db_name" value="w2v_new_redis_db"/>
+                <param key="from" value="94"/>
+            </recdoc_select>
+            <!--ICF_added-->
+            <recdoc_select doc_source="cf_feedback" percent="0.25" candidate_size="150">
+                <param key="icf_db_name_new" value="icf_new_redis_db"/>
+                <param key="from" value="95"/>
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select name="keywords_rt" doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="6"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="explore_video" value="1"/>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1200">
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_prefere_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+                <!--w2v added-->
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <!--ICF_added-->
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="cf_feedback"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="video_coldboot"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="fm_rank">
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_process"/>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!-- 打压低俗视频，新w2v代替老w2v,加入新ICF candisize 150 -->
+        <rec_personal_flow candidate_size="100" name="exp_fm_new_word2vect_new_icf_new_disuSuppress">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="50">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="50">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="50">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="50">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <!-- w2v_new_redis_db-->
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="150">
+                <param key="w2v_db_name" value="w2v_new_redis_db"/>
+                <param key="from" value="94"/>
+            </recdoc_select>
+            <!--ICF_added-->
+            <recdoc_select doc_source="cf_feedback" percent="0.25" candidate_size="150">
+                <param key="icf_db_name_new" value="icf_new_redis_db"/>
+                <param key="disu_suppress_flag" value="1"/>
+                <param key="from" value="98"/>
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select name="keywords_rt" doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="6"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="explore_video" value="1"/>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1200">
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_prefere_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+
+                <!--w2v added-->
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <!--ICF_added-->
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="cf_feedback"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="video_coldboot"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="fm_rank">
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_process"/>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!-- 新w2v代替老w2v -->
+        <rec_personal_flow candidate_size="100" name="exp_fm_pct_new_w2v">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="50">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="50">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="50">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="50">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+            </recdoc_select>
+            <recdoc_select name="keywords_rt" doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="6"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="explore_video" value="1"/>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1000">
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_prefere_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="video_coldboot"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="fm_rank">
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_process"/>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!--其他-->
+        <rec_personal_flow candidate_size="100" name="exp_lr">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="25">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="25">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="25">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="25">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <!--<recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">-->
+            <!--<param key="cates" value="1-99"/>-->
+            <!--</recdoc_select>-->
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="25">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="25">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="25">
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="25">
+                <param key="cates" value="1-99"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="50">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="6"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="50">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="100">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="100">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="100">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="25">
+                <param key="cates" value="1-99"/>
+                <param key="explore_video" value="1"/>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1000">
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="video_coldboot"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="lr_rank">
+                <param key="use_pct" value="0"/>
+            </rank_process>
+
+            <end_process name="end_fm_process"/>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!--其他-->
+        <rec_personal_flow candidate_size="100" name="exp_lr_pct">
+            <recdoc_select doc_source="hand_list_by_set" percent="0.5" candidate_size="25">
+                <param key="name" value="list_top20_pct4"/>
+            </recdoc_select>
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="25">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="25">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="25">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <!--<recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">-->
+            <!--<param key="cates" value="1-99"/>-->
+            <!--</recdoc_select>-->
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="25">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="25">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="25">
+            </recdoc_select>
+            <recdoc_select doc_source="user_keywords_recall" percent="0.25" candidate_size="25">
+                <param key="cates" value="1-99"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="50">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="6"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="50">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="100">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="100">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="100">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="25">
+                <param key="cates" value="1-99"/>
+                <param key="explore_video" value="1"/>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1000">
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="hand_list_by_set"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="user_keywords_recall"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="25"/>
+                    <param key="candidate" value="video_coldboot"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="lr_rank">
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_process"/>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="pct_weekly_update">
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.875"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="topic_recall_v2">
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.625"/>
+            <import name="select_topic_hot_video" percent="0.25"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+            <result_process process_name="shuffle_sublist">
+                <param key="from" value="3"/>
+                <param key="to" value="8"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!--低俗用户槽位探索-->
+        <rec_personal_flow candidate_size="100" name="user_long_short_prefer">
+            <!--[pct4-monthly + pct4-weekly]-->
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.625"/>
+            <!--长期偏好-->
+            <recdoc_select doc_source="user_prefere" percent="0.125" candidate_size="200">
+                <param key="include_dishu" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.125" candidate_size="100">
+                <param key="include_dishu" value="1"/>
+            </recdoc_select>
+            <!--&lt;!&ndash;短期偏好+低俗二级偏好&ndash;&gt;-->
+            <!--<recdoc_select doc_source="union" percent="0.125" candidate_size="20">-->
+            <!--<recdoc_select doc_source="recently_read_cates" percent="0.5" candidate_size="10">-->
+            <!--</recdoc_select>-->
+            <!--<recdoc_select doc_source="recently_read_cates_second" percent="0.5" candidate_size="10">-->
+            <!--<param key="cates" value="1000-1999"/>-->
+            <!--</recdoc_select>-->
+            <!--</recdoc_select>-->
+            <!--探索-->
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+            <import name="select_bottom" percent="1.0"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_topic_prefer_recall">
+            <import name="select_hotest_union" percent="0.375"/>
+            <import name="select_topic_hot_video" percent="0.25"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_hotest_union" percent="1.0"/>
+            <import name="select_explore_v2" percent="1.0"/>
+            <result_process process_name="shuffle_sublist">
+                <param key="from" value="3"/>
+                <param key="to" value="8"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_word2vec">
+            <import name="select_hotest_union" percent="0.375"/>
+            <import name="select_word2vec_recall" percent="0.125"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_hotest_union" percent="1.0"/>
+            <import name="select_explore_v2" percent="1.0"/>
+            <result_process process_name="shuffle_sublist">
+                <param key="from" value="3"/>
+                <param key="to" value="8"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <!-- 小视频内流 -->
+        <rec_in_small_video_flow candidate_size="100" name="small_video_health">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_small_video_health_beauty"/>
+            </recdoc_select>
+            <import name="select_dl_hotest_small_video" percent="1.0"/>
+            <import name="select_dl_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_01_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_23_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_45_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_67_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_89_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_ab_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_cd_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_ef_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="in_sv_default_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_01">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_23">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_45">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_67">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_89">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_ab">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_cd">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="exp_in_sv_ef">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_in_sv_hot_by_cate_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="default">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_default"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <!-- 小视频内流美女进去 107 2个 美女 4个 非美女 2个 -->
+        <rec_in_small_video_flow candidate_size="100" name="insv_beauty_plan_v1">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_beauty_plan_v1"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="insv_beauty_plan_107_test">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_beauty_plan_107_test"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="insv_beauty_plan_107_young">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_beauty_plan_107_young"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <!-- 小视频内流非美女进去 107 1个 美女 3个 非美女 4个 -->
+        <rec_in_small_video_flow candidate_size="100" name="insv_no_beauty_plan_v1">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_no_beauty_plan_v1"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <!-- 小视频内流美女进去 107 2个 当前cate美女 4个 非美女 2个 -->
+        <rec_in_small_video_flow candidate_size="100" name="insv_beauty_plan_v2">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_beauty_plan_v2"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <rec_in_small_video_flow candidate_size="100" name="insv_beauty_plan_v5">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_beauty_plan_v5"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="insv_beauty_plan_young">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_beauty_plan_young"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <!-- 小视频内流非美女进去 107 1个 美女 3个 当前cate非美女 4个 -->
+        <rec_in_small_video_flow candidate_size="100" name="insv_no_beauty_plan_v2">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_no_beauty_plan_v2"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <!-- 小视频内流非美女进去 107 1个 美女 1个 当前cate非美女 6个 -->
+        <rec_in_small_video_flow candidate_size="100" name="insv_no_beauty_plan_v3">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_no_beauty_plan_v3"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v7">
+            </result_process>
+        </rec_in_small_video_flow>
+        <rec_in_small_video_flow candidate_size="100" name="insv_beauty_plan_young_no_beauty">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_beauty_plan_young_no_beauty"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v7">
+            </result_process>
+        </rec_in_small_video_flow>
+        <rec_in_small_video_flow candidate_size="100" name="insv_no_beauty_plan_v5">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_no_beauty_plan_v5"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v7">
+            </result_process>
+        </rec_in_small_video_flow>
+        <!-- 替换成V5热门召回队列-小视频内流非美女进去 107 1个 美女 3个 当前cate非美女 4个-->
+        <rec_in_small_video_flow candidate_size="100" name="insv_beauty_plan_v4">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_beauty_plan_v4"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <!-- 替换成V5热门召回队列-小视频内流非美女进去 107 1个 美女 3个 当前cate非美女 4个 -->
+        <rec_in_small_video_flow candidate_size="100" name="insv_no_beauty_plan_v4">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_no_beauty_plan_v4"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <!-- 小视频内流腾讯渠道 -->
+        <rec_in_small_video_flow candidate_size="100" name="exp_sv_tx">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_tx"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <rec_in_small_video_flow candidate_size="100" name="exp_sv_tx_deep_night">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_tx_deep_night"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <rec_in_small_video_flow candidate_size="100" name="exp_sv_tx_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_136_new_tx"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+        <rec_in_small_video_flow candidate_size="100" name="exp_sv_tx">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_tx"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <!-- 小视频内流，按聚类标签进行推荐 -->
+        <rec_in_small_video_flow candidate_size="100" name="insv_cluster_label">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_cluster_label"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_in_small_video_flow candidate_size="100" name="sv_baidu_label">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_baidu_label"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_vote_rank">
+            <import name="select_hotest_union" percent="0.375"/>
+            <import name="select_vote_rank_recall" percent="0.125"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_hotest_union" percent="1.0"/>
+            <import name="select_explore_v2" percent="1.0"/>
+            <result_process process_name="shuffle_sublist">
+                <param key="from" value="3"/>
+                <param key="to" value="8"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="real_time_pct">
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.875"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+            <import name="select_explore_v2" percent="1.0"/>
+            <result_process process_name="shuffle_sublist">
+                <param key="from" value="3"/>
+                <param key="to" value="8"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="default">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_default"/>
+            </recdoc_select>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.875"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_top_recall">
+                <param key="recall" value="41"/>
+            </result_process>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="exp_z">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_expz"/>
+            </recdoc_select>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="0.875"/>
+            <import name="select_explore_v2" percent="0.125"/>
+            <import name="select_dtu_lt_2k_pct_long_term_daily_update" percent="1.0"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="health_8vs0_exp0_7">
+            <recdoc_select name="prefer" doc_source="union" percent="0.25" candidate_size="50">
+                <recdoc_select doc_source="user_prefere" percent="0.0625" candidate_size="50">
+                    <param key="explore" value="1"/>
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+                <recdoc_select doc_source="user_prefere" percent="1" candidate_size="50">
+                    <param key="cates" value="1-99"/>
+                    <param key="real_time_pct" value="1"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="user_prefere_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+                <param key="real_time_pct_use" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="recently_read_cates_second" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="real_time_pct" value="1"/>
+                <param key="real_time_pct_use" value="1"/>
+            </recdoc_select>
+            <!-- w2v_new_redis_db-->
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="150">
+                <param key="w2v_db_name" value="w2v_new_redis_db"/>
+                <param key="from" value="94"/>
+            </recdoc_select>
+            <!--ICF_added_all_disu-->
+            <!--ICF_added_no_disu-->
+            <recdoc_select name="cf_no_disu" doc_source="cf_feedback" percent="0.25" candidate_size="150">
+                <param key="icf_db_name_new" value="icf_new_redis_db"/>
+                <param key="disu_suppress_flag" value="1"/>
+                <param key="from" value="98"/>
+            </recdoc_select>
+            <recdoc_select name="keyword_v2" doc_source="keyword_prefer_v2" percent="0.25" candidate_size="50">
+                <param key="use_mget_keywords" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="keywords_rt_v2" doc_source="keyword_prefer_v2" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+                <param key="use_mget_keywords" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic1" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="6"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                    <param key="cates" value="1-3,7-9,15,19,22,39,44"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="video_coldboot" doc_source="recently_read_cates" percent="0.25" candidate_size="50">
+                <param key="cates" value="1-99"/>
+                <param key="explore_video" value="1"/>
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1150">
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="prefer"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="user_prefere_second"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="recently_read_cates_second"/>
+                </slot>
+
+                <!--w2v added-->
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <!--ICF_added_no_disu-->
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="cf_no_disu"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keyword_v2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt_v2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic1"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="video_coldboot"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="fm_rank">
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_process"/>
+
+            <result_process process_name="cross_cate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="91"/>
+            </result_process>
+        </rec_personal_flow>
+
+
+        <rec_personal_flow candidate_size="100" name="health_2">
+            <!--            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">-->
+            <!--                <param key="mysql_key" value="select_health"/>-->
+            <!--            </recdoc_select>-->
+            <!--            &lt;!&ndash;<recdoc_select doc_source="recently_read_cates" percent="0.375" candidate_size="100">&ndash;&gt;-->
+            <!--            &lt;!&ndash;<param key="cates" value="3-14,16-21,23-99"/>&ndash;&gt;-->
+            <!--            &lt;!&ndash;<param key="recently_num" value="100"/>&ndash;&gt;-->
+            <!--            &lt;!&ndash;</recdoc_select>&ndash;&gt;-->
+            <!--            &lt;!&ndash;<recdoc_select doc_source="user_prefere" percent="0.5" candidate_size="100">&ndash;&gt;-->
+            <!--            &lt;!&ndash;<param key="cates" value="3-14,16-21,23-99"/>&ndash;&gt;-->
+            <!--            &lt;!&ndash;</recdoc_select>&ndash;&gt;-->
+            <!--            &lt;!&ndash;<recdoc_select doc_source="user_prefere" percent="0.125" candidate_size="100">&ndash;&gt;-->
+            <!--            &lt;!&ndash;<param key="cates" value="3-14,16-21,23-99"/>&ndash;&gt;-->
+            <!--            &lt;!&ndash;<param key="explore" value="1"/>&ndash;&gt;-->
+            <!--            &lt;!&ndash;</recdoc_select>&ndash;&gt;-->
+            <recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="100">
+                <param key="name" value="list_health_2"/>
+            </recdoc_select>
+            <recdoc_select doc_source="hotest_by_one_cate_v3" percent="0.8" candidate_size="100">
+                <param key="cate" value="39"/>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="39"/>
+            </recdoc_select>
+            <recdoc_select doc_source="random_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="39"/>
+            </recdoc_select>
+
+            <!--<recdoc_filter filter_name="cate_num_limit">-->
+            <!--<param key="cate_limit_num" value="2"/>-->
+            <!--</recdoc_filter>-->
+
+            <result_process process_name="shuffle"/>
+            <result_process process_name="cross_cate"/>
+        </rec_personal_flow>
+
+        <rec_personal_flow candidate_size="100" name="health">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_health"/>
+            </recdoc_select>
+            <!--<recdoc_select doc_source="recently_read_cates" percent="0.375" candidate_size="100">-->
+            <!--<param key="cates" value="3-14,16-21,23-99"/>-->
+            <!--<param key="recently_num" value="100"/>-->
+            <!--</recdoc_select>-->
+            <!--<recdoc_select doc_source="user_prefere" percent="0.5" candidate_size="100">-->
+            <!--<param key="cates" value="3-14,16-21,23-99"/>-->
+            <!--</recdoc_select>-->
+            <!--<recdoc_select doc_source="user_prefere" percent="0.125" candidate_size="100">-->
+            <!--<param key="cates" value="3-14,16-21,23-99"/>-->
+            <!--<param key="explore" value="1"/>-->
+            <!--</recdoc_select>-->
+            <!--<recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="100">-->
+            <!--<param key="name" value="list_dtu_coldboot_health"/>-->
+            <!--</recdoc_select>-->
+            <recdoc_select doc_source="hotest_by_one_cate_v3" percent="0.8" candidate_size="100">
+                <param key="cate" value="39"/>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="39"/>
+            </recdoc_select>
+            <recdoc_select doc_source="random_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="39"/>
+            </recdoc_select>
+
+            <!--<recdoc_filter filter_name="cate_num_limit">-->
+            <!--<param key="cate_limit_num" value="2"/>-->
+            <!--</recdoc_filter>-->
+
+            <result_process process_name="shuffle"/>
+            <result_process process_name="cross_cate"/>
+        </rec_personal_flow>
+
+        <rec_similar_flow candidate_size="50" name="detailpage_w2v_icf">
+            <recdoc_select doc_source="word2vec_item_cf_similar" percent="0.25" candidate_size="50">
+                <param key="w2v_db_name" value="w2v_new_redis_db"/>
+            </recdoc_select>
+            <recdoc_select doc_source="cf_feedback_similar" percent="0.25" candidate_size="50">
+                <param key="icf_db_name_new" value="icf_new_redis_db"/>
+            </recdoc_select>
+            <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.25" candidate_size="50"/>
+            <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="50"/>
+            <import name="select_hotest_v3" percent="1"/>
+            <import name="select_explore_v2" percent="1"/>
+        </rec_similar_flow>
+
+        <rec_similar_flow candidate_size="50" name="continueplay_pct">
+            <recdoc_select doc_source="pct_cate_hot" percent="1.0" candidate_size="100">
+                <param key="cates_by_reccontext" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.5" candidate_size="50"/>
+            <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.5" candidate_size="50"/>
+            <import name="select_hotest_v3" percent="1"/>
+            <import name="select_explore_v2" percent="1"/>
+        </rec_similar_flow>
+
+        <rec_similar_flow candidate_size="100" name="default">
+            <import name="select_channel_cate_host" percent="1.0"/>
+            <!--<import name="select_explore_by_set_cate_or_one_cate" percent="1"/>-->
+            <import name="select_hotest_v3" percent="1"/>
+            <import name="select_explore_v2" percent="1"/>
+            <!--<result_process process_name="shuffle"/>-->
+        </rec_similar_flow>
+
+        <!--<rec_similar_flow candidate_size="100" name="similar_add_disu">-->
+        <!--<recdoc_select doc_source="hand_list_by_set" percent="1" candidate_size="8">-->
+        <!--<param key="name" value="list_top20_pct4"/>-->
+        <!--</recdoc_select>-->
+        <!--<import name="select_channel_cate_host" percent="1.0"/>-->
+        <!--&lt;!&ndash;<import name="select_explore_by_set_cate_or_one_cate" percent="1"/>&ndash;&gt;-->
+        <!--<import name="select_hotest_v3" percent="1"/>-->
+        <!--<import name="select_explore_v2" percent="1"/>-->
+        <!--<result_process process_name="shuffle"/>-->
+        <!--</rec_similar_flow>-->
+
+        <rec_similar_flow candidate_size="100" name="similar_exp">
+            <recdoc_select doc_source="cf_feedback_similar" percent="1.0" candidate_size="50">
+                <param key="user_read_client_name" value="userread_from_feature_server"/>
+                <param key="doc_client_name" value="cf_cache_db"/>
+                <param key="top_n" value="10"/>
+            </recdoc_select>
+            <recdoc_select doc_source="pct_by_some_cates" percent="1.0" candidate_size="100">
+                <param key="list_name" value="list_pct_chan_daily"/>
+            </recdoc_select>
+            <import name="select_channel_cate_host" percent="1.0"/>
+            <!--<import name="select_explore_by_set_cate_or_one_cate" percent="1"/>-->
+            <import name="select_hotest_v3" percent="1"/>
+            <import name="select_explore_v2" percent="1"/>
+            <!--<result_process process_name="shuffle"/>-->
+        </rec_similar_flow>
+
+        <!--<rec_channel_list_flow candidate_size="100" name="default">-->
+        <!--<import name="select_channel_cate_host" percent="0.75"/>-->
+        <!--<import name="select_explore_by_set_cate_or_one_cate" percent="0.25"/>-->
+        <!--&lt;!&ndash;<import name="select_hotest_by_one_cate" percent="1"/>&ndash;&gt;-->
+        <!--<import name="select_hotest_by_one_cate_v3" percent="1"/>-->
+        <!--<import name="select_explore_by_set_cate_or_one_cate" percent="1.0"/>-->
+        <!--&lt;!&ndash;<import name="select_random_by_set_cate_or_one_cate" percent="1"/>&ndash;&gt;-->
+        <!--<import name="select_hotest_v3" percent="1"/>-->
+        <!--<import name="select_explore_v2" percent="1"/>-->
+        <!--&lt;!&ndash;<result_process process_name="shuffle"/>&ndash;&gt;-->
+        <!--</rec_channel_list_flow>-->
+
+        <rec_channel_list_flow candidate_size="100" name="default">
+            <recdoc_select doc_source="union" percent="0.75" candidate_size="100">
+                <recdoc_select doc_source="pct_by_some_cates" percent="1.0" candidate_size="100">
+                    <param key="list_name" value="list_pct_chan_daily"/>
+                </recdoc_select>
+                <recdoc_select doc_source="hotest_by_one_cate" percent="1.0" candidate_size="100"/>
+                <recdoc_select doc_source="hotest_by_one_cate_v3" percent="1.0" candidate_size="100"/>
+                <recdoc_select doc_source="qukan_hotest_by_one_cate" percent="1.0" candidate_size="100">
+                </recdoc_select>
+            </recdoc_select>
+            <import name="select_explore_by_set_cate_or_one_cate" percent="0.25"/>
+            <import name="select_hotest_by_one_cate_v3" percent="1"/>
+            <import name="select_explore_by_set_cate_or_one_cate" percent="1.0"/>
+            <import name="select_hotest_v3" percent="1"/>
+            <import name="select_explore_v2" percent="1"/>
+        </rec_channel_list_flow>
+
+        <!-- <rec_channel_list_flow candidate_size="100" name="channel_fresh">
+            <recdoc_select name="vulgar" doc_source="union" percent="0.125" candidate_size="50">
+                <recdoc_select doc_source="pct_by_some_cates" percent="1.0" candidate_size="100">
+                    <param key="list_name" value="list_pct_chan_daily"/>
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select name="weak_vulgar" doc_source="union" percent="0.125" candidate_size="50">
+                <recdoc_select doc_source="explore_by_cates" percent="1.0" candidate_size="100" />
+            </recdoc_select>
+            <recdoc_select name="fresh_cates" doc_source="union" percent="0.125" candidate_size="50">
+                <recdoc_select doc_source="explore_by_cates" percent="1.0" candidate_size="100" />
+            </recdoc_select>
+        </rec_channel_list_flow> -->
+
+        <rec_channel_list_flow candidate_size="100" name="default_fm">
+            <!-- w2v_new_redis_db-->
+            <recdoc_select doc_source="word2vec_item_cf" percent="0.25" candidate_size="150">
+                <param key="w2v_db_name" value="w2v_new_redis_db"/>
+                <param key="from" value="94"/>
+            </recdoc_select>
+            <!--ICF_added-->
+            <recdoc_select doc_source="cf_feedback" percent="0.25" candidate_size="150">
+                <param key="icf_db_name_new" value="icf_new_redis_db"/>
+                <param key="from" value="95"/>
+            </recdoc_select>
+            <recdoc_select name="keywords_rt" doc_source="user_keywords_recall" percent="0.25" candidate_size="50">
+                <param key="use_rt_keyword" value="1"/>
+            </recdoc_select>
+            <recdoc_select name="topic2" doc_source="user_topic_prefer_recall" percent="0.25" candidate_size="100">
+                <param key="include_dishu" value="0"/>
+                <param key="topic_limit" value="10"/>
+                <param key="use_rt_topics" value="1"/>
+            </recdoc_select>
+            <recdoc_select doc_source="union" percent="0.25" candidate_size="200">
+                <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.75" candidate_size="200">
+                </recdoc_select>
+                <recdoc_select doc_source="ctr_new_by_some_cates" percent="0.25" candidate_size="200">
+                </recdoc_select>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_cates" percent="1.0" candidate_size="50">
+            </recdoc_select>
+
+            <merge_process name="weight_merge" total="1200">
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="word2vec_item_cf"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="150"/>
+                    <param key="candidate" value="cf_feedback"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="keywords_rt"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="100"/>
+                    <param key="candidate" value="topic2"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="200"/>
+                    <param key="candidate" value="union"/>
+                </slot>
+                <slot>
+                    <param key="weight" value="50"/>
+                    <param key="candidate" value="explore_by_cates"/>
+                </slot>
+            </merge_process>
+
+            <rank_process name="fm_rank">
+                <param key="fm_rank_predict_client" value="fm_channel_predict_client"/>
+                <param key="use_pct" value="1"/>
+            </rank_process>
+
+            <end_process name="end_fm_channel_process">
+                <param key="recall_inserts_name" value="explore_by_cates:2"/>
+                <param key="same_keywords_num_limit" value="1"/>
+            </end_process>
+
+            <result_process process_name="disu_relate_locate"/>
+            <result_process process_name="set_bottom_recall">
+                <param key="recall" value="35"/>
+            </result_process>
+        </rec_channel_list_flow>
+
+        <!-- <rec_small_video_flow candidate_size="100" name="small_video_health">
+            <recdoc_select doc_source="hotest_by_one_cate_v3" percent="0.8" candidate_size="100">
+                <param key="cate" value="100"/>
+            </recdoc_select>
+            <recdoc_select doc_source="explore_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="100"/>
+            </recdoc_select>
+            <recdoc_select doc_source="random_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="100"/>
+            </recdoc_select>
+            <result_process process_name="shuffle"/>
+        </rec_small_video_flow> -->
+
+        <!--        <rec_small_video_flow candidate_size="100" name="small_video_health">-->
+        <!--            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">-->
+        <!--                <param key="mysql_key" value="select_sv_health"/>-->
+        <!--            </recdoc_select>-->
+        <!--            <import name="select_hotest_small_video" percent="1.0"/>-->
+        <!--            <import name="select_explore_small_video" percent="1.0"/>-->
+        <!--            <result_process process_name="regular_shuffle_v1">-->
+        <!--            </result_process>-->
+        <!--        </rec_small_video_flow>-->
+        <rec_small_video_flow candidate_size="100" name="small_video_health">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_small_video_health_beauty"/>
+            </recdoc_select>
+            <import name="select_dl_hotest_small_video" percent="1.0"/>
+            <import name="select_dl_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_small_video_flow>
+
+        <!-- 小视频新探索方式 -->
+        <rec_small_video_flow candidate_size="100" name="sv_explore_by_cates_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="explore_by_cates_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <!-- 小视频探索，按类别ctr -->
+        <rec_small_video_flow candidate_size="100" name="sv_explore_by_cates_ctr">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_explore_by_cates_ctr"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <!-- 小视频内流，增加探索 -->
+        <rec_in_small_video_flow candidate_size="100" name="insv_no_beauty_plan_v3_add_explore">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_insv_no_beauty_plan_v3_add_explore"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_insv_explore">
+            </result_process>
+        </rec_in_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="new_small_video_health">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_small_video_health_beauty"/>
+            </recdoc_select>
+            <import name="select_dl_hotest_small_video" percent="1.0"/>
+            <import name="select_dl_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_comment">
+            <recdoc_select doc_source="hand_list_by_set" percent="1" candidate_size="50">
+                <param key="name" value="list_comment_small_video"/>
+            </recdoc_select>
+            <recdoc_select doc_source="random_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="100"/>
+            </recdoc_select>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_exp_z">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_exp_z"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_192_set">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_192_set"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_01_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_01_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_more_beauty_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_new_more_beauty"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_23_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_23_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_45_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_45_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_67_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_67_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_89_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_89_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_ab_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_ab_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_people_beauty_109">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_109_people_beauty"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="shuffle_sublist">
+                <param key="from" value="2"/>
+                <param key="to" value="8"/>
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_cd_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_cd_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_ef_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_ef_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_default_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_default_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_01">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_01"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_23">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_23"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_45">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_45"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_67">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_67"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_89">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_89"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_ab">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_ab"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_cd">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_cd"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_ef">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_ef"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="default">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_default"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_loyalty_plan">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_loyalty_plan"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_deep_night_plan_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_deep_night_plan_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_0_deep_night_plan_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_0_deep_night_plan_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_deep_night_plan">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_deep_night_plan"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_exceed_sixtheen_plan_v1">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_exceed_sixtheen_plan_v1"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_192_sixteen_set">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_192_sixteen"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_exceed_sixtheen_plan_v2">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_exceed_sixtheen_plan_v2"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_exceed_sixtheen_plan_v3">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_exceed_sixtheen_plan_v3"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_people_beauty_109_less16">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_109_people_beauty"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="shuffle_sublist">
+                <param key="from" value="2"/>
+                <param key="to" value="8"/>
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_people_beauty_109_more16">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_109_people_beauty_more16"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <!--新召回队列 -->
+        <rec_small_video_flow candidate_size="100" name="sv_new_hottest_handlist_queue">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_new_hottest_handlist"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <!--90新召回队列 -->
+        <rec_small_video_flow candidate_size="100" name="sv_90_new_hottest_handlist_queue">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_90_new_hottest_handlist"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="sv_90_new_hottest_handlist_queue_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_90_new_hottest_handlist_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <!-- 16次以上的新召回队列策略-->
+        <rec_small_video_flow candidate_size="100" name="new_hottest_sv_exceed_sixtheen_plan_v1_queue">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="new_hottest_sv_exceed_sixtheen_plan_v1"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+
+        <!-- 16次以上的90新召回队列策略-->
+        <rec_small_video_flow candidate_size="100" name="new_90_hottest_sv_exceed_sixtheen_plan_v1_queue">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="new_90_hottest_sv_exceed_sixtheen_plan_v1"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_0_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_0_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_test_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_test_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_test_health">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_test_health"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_0_sixteen_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_0_sixteen_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="djq_test">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_djq_test"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+        <!-- 小视频外流腾讯渠道 -->
+        <rec_small_video_flow candidate_size="100" name="exp_sv_tx">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_tx"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_small_video_flow>
+        <rec_small_video_flow candidate_size="100" name="exp_sv_tx_deep_night">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_tx_deep_night"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_interesting">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_interesting"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v4">
+            </result_process>
+        </rec_small_video_flow>
+
+        <!-- 将exp_sv_interesting中的探索换成explore_by_cate_ctr -->
+        <rec_small_video_flow candidate_size="100" name="exp_sv_interesting_add_explore_ctr">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_interesting_add_explore_ctr"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v4">
+            </result_process>
+        </rec_small_video_flow>
+
+        <!-- 小视频强插多类别视频 -->
+        <rec_small_video_flow candidate_size="100" name="exp_sv_force_insert">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_force_insert"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v4">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_interesting_1st">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_interesting_1st"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v5">
+            </result_process>
+        </rec_small_video_flow>
+        <!-- 干净画风 -->
+        <rec_small_video_flow candidate_size="100" name="exp_sv_style">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_style"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+        <!-- 互动 -->
+        <rec_small_video_flow candidate_size="100" name="exp_sv_community">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_community"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <!-- 136版本新用户固定队列 -->
+        <rec_small_video_flow candidate_size="100" name="exp_sv_136_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_136_new"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_136_new_force_insert">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_exp_sv_136_new_force_insert"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_136_test">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_136_test"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_young">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_young"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_136_w">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_136_new_w"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <recdoc_filter filter_name="cate_num_limit">
+                <param key="cate_limit_num" value="1"/>
+            </recdoc_filter>
+            <result_process process_name="regular_shuffle_v8">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_small_video_flow candidate_size="100" name="exp_sv_tx_new">
+            <recdoc_select doc_source="selector_from_mysql" percent="1.0" candidate_size="100">
+                <param key="mysql_key" value="select_sv_136_new_tx"/>
+            </recdoc_select>
+            <import name="select_hotest_small_video" percent="1.0"/>
+            <import name="select_explore_small_video" percent="1.0"/>
+            <result_process process_name="regular_shuffle_v1">
+            </result_process>
+        </rec_small_video_flow>
+
+        <rec_share_video_flow candidate_size="100" name="big_city">
+            <recdoc_select doc_source="hand_list_by_set" percent="1.0" candidate_size="100">
+                <param key="name" value="list_health_2"/>
+            </recdoc_select>
+            <recdoc_select doc_source="qukan_hotest" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="hotest_small_video" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="random_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="100"/>
+            </recdoc_select>
+            <result_process process_name="cross_cate"/>
+        </rec_share_video_flow>
+
+
+        <rec_share_video_flow candidate_size="100" name="not_big_city">
+            <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.5" candidate_size="100">
+                <param key="cates" value="53"/>
+            </recdoc_select>
+            <recdoc_select doc_source="ctr_high_by_some_cates" percent="0.5" candidate_size="100"/>
+            <recdoc_select doc_source="qukan_hotest" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="hotest_small_video" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="random_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="100"/>
+            </recdoc_select>
+        </rec_share_video_flow>
+
+
+
+        <rec_share_video_flow candidate_size="100" name="default">
+            <recdoc_select doc_source="hotest" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="qukan_hotest" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="hotest_small_video" percent="1.0" candidate_size="100"/>
+            <recdoc_select doc_source="random_by_set_cate_or_one_cate" percent="1.0" candidate_size="100">
+                <param key="cate" value="100"/>
+            </recdoc_select>
+        </rec_share_video_flow>
+
+
+        <rec_album_recommend_video_flow candidate_size="100" name="default">
+            <import name="select_random_album_ep1" percent="1.0" candidate_size="6000"/>
+            <import name="select_explore_album" percent="0.5" candidate_size="6000"/>
+            <import name="select_random_album" percent="0.5" candidate_size="6000"/>
+            <import name="select_explore_album" percent="1.0" candidate_size="6000"/>
+            <import name="select_random_album" percent="1.0" candidate_size="6000"/>
+
+            <result_process process_name="album_next_ep"/>
+        </rec_album_recommend_video_flow>
+
+        <rec_album_similar_video_flow candidate_size="100" name="default">
+            <recdoc_select doc_source="random_album_ep1_by_one_cate" percent="1.0" candidate_size="500">
+                <recdoc_process process_name="shuffle"/>
+            </recdoc_select>
+            <recdoc_select doc_source="hotest_album_ep1" percent="1.0" candidate_size="5000"/>
+
+            <result_process process_name="shuffle"/>
+            <result_process process_name="album_set_top"/>
+        </rec_album_similar_video_flow>
+
+    </rec_data_flows>
+
+    <rec_data_rules>
+        <include>rules_8vs1.xml</include>
+        <include>rules_8vs2.xml</include>
+        <include>rules_8vs4.xml</include>
+        <include>rules_8vs8.xml</include>
+        <include>rules_channel.xml</include>
+        <include>rules.xml</include>
+    </rec_data_rules>
+
+</recommenderconfig>

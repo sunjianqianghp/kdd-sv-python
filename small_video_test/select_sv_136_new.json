@@ -1,0 +1,146 @@
+{
+  "doc_source": "union",
+  "recdoc_select": [
+    {
+      "doc_source": "union",
+      "recdoc_select": [
+        {
+          "doc_source": "sv_new_hottest_handlist_by_cates",
+          "candidate_size": 2,
+          "percent": 1,
+          "param": [
+            {
+              "value": "107",
+              "key": "specifiedCates"
+            }
+          ]
+        },
+        {
+          "doc_source": "hotest_small_video",
+          "candidate_size": 2,
+          "percent": 1,
+          "param": [
+            {
+              "value": "107",
+              "key": "specifiedCates"
+            }
+          ]
+        }
+      ],
+      "candidate_size": 2,
+      "percent": 0.25
+    },
+    {
+      "doc_source": "union",
+      "recdoc_select": [
+        {
+          "doc_source": "in_sv_new_hottest_handlist_by_cates",
+          "candidate_size": 4,
+          "percent": 1,
+          "param": [
+            {
+              "value": "99999",
+              "key": "specifiedCates"
+            }
+          ]
+        },
+        {
+          "doc_source": "in_sv_hotest_small_video",
+          "candidate_size": 4,
+          "percent": 1,
+          "param": [
+            {
+              "value": "99999",
+              "key": "specifiedCates"
+            }
+          ]
+        },
+        {
+          "doc_source": "in_sv_new_hottest_handlist_by_cates",
+          "candidate_size": 8,
+          "percent": 1,
+          "param": [
+            {
+              "value": "99999",
+              "key": "specifiedCates"
+            }
+          ]
+        },
+        {
+          "doc_source": "in_sv_explore_by_cates",
+          "candidate_size": 8,
+          "percent": 1,
+          "param": [
+            {
+              "value": "99999",
+              "key": "cates"
+            }
+          ]
+        },
+        {
+          "doc_source": "sv_new_hottest_handlist_by_cates",
+          "candidate_size": 4,
+          "percent": 1,
+          "param": [
+            {
+              "value": "101,110,180,108,156,192,329,371,372,376,397,435,440,442,459",
+              "key": "specifiedCates"
+            }
+          ]
+        },
+        {
+          "doc_source": "hotest_small_video",
+          "candidate_size": 4,
+          "percent": 1,
+          "param": [
+            {
+              "value": "101,110,180,108,156,192,329,371,372,376,397,435,440,442,459",
+              "key": "specifiedCates"
+            }
+          ]
+        }
+      ],
+      "candidate_size": 4,
+      "percent": 0.5
+    },
+    {
+      "doc_source": "union",
+      "recdoc_select": [
+        {
+          "doc_source": "sv_test_hottest",
+          "candidate_size": 8,
+          "percent": 1,
+          "param": [
+            {
+              "key": "specifiedCates",
+              "value": "101-500"
+            },
+            {
+              "key": "excludeCates",
+              "value": "156,101,107,108,110,131,180,192,329,371,372,376,397,435,440,442,459"
+            }
+          ]
+        },
+        {
+          "doc_source": "hotest_small_video",
+          "candidate_size": 8,
+          "percent": 1,
+          "param": [
+            {
+              "key": "specifiedCates",
+              "value": "101-500"
+            },
+            {
+              "key": "excludeCates",
+              "value": "156,101,107,108,110,131,180,192,329,371,372,376,397,435,440,442,459"
+            }
+          ]
+        }
+      ],
+      "candidate_size": 8,
+      "percent": 1
+    }
+  ],
+  "candidate_size": 8,
+  "percent": 1
+}
