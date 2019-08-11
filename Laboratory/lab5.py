@@ -3,6 +3,8 @@ import numpy as np
 from sklearn import svm
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+import warnings
+warnings.filterwarnings("ignore")
 
 data = []
 labels = []
@@ -44,5 +46,9 @@ for i, clf in enumerate((clf_linear, clf_rbf, clf_sigmoid)):
     plt.ylabel('Y')
     plt.xticks(())
     plt.yticks(())
-#     plt.titile(titles[i])
+    plt.title(titles[i])
 plt.show()
+
+
+# plt.scatter(np.array(data)[:, 0], np.array(data)[:,1], c = y+1 )
+# plt.show()

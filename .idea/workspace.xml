@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c610fd4c-0705-43f8-a383-61dba4845f5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Laboratory/jupyter_lab.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Laboratory/lab5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Laboratory/lab5.py" afterDir="false" />
     </list>
@@ -13,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/kdd_sv_python$lab5.coverage" NAME="lab5 Coverage Results" MODIFIED="1565518378431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Laboratory" />
+    <SUITE FILE_PATH="coverage/kdd_sv_python$lab5.coverage" NAME="lab5 Coverage Results" MODIFIED="1565519290248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Laboratory" />
     <SUITE FILE_PATH="coverage/kdd_sv_python$kdd_sv_python.coverage" NAME="kdd-sv-python Coverage Results" MODIFIED="1565339048822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FileEditorManager">
@@ -26,10 +25,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Laboratory/lab5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="325">
+              <caret line="46" column="18" lean-forward="true" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
               <folding>
-                <element signature="e#24#43#0" expanded="true" />
+                <element signature="e#24#42#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,13 +52,14 @@
       <list>
         <option value="$PROJECT_DIR$/adx_test/adxTest.py" />
         <option value="$PROJECT_DIR$/Laboratory/jupyter_lab.ipynb" />
+        <option value="$PROJECT_DIR$/Laboratory/svm_data.txt" />
         <option value="$PROJECT_DIR$/Laboratory/lab5.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="217" />
-    <option name="y" value="23" />
+    <option name="x" value="236" />
+    <option name="y" value="95" />
     <option name="width" value="1223" />
     <option name="height" value="813" />
   </component>
@@ -68,7 +68,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -85,6 +84,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -169,21 +169,24 @@
       <workItem from="1565421255534" duration="1000000" />
       <workItem from="1565423538988" duration="289000" />
       <workItem from="1565518076771" duration="231000" />
+      <workItem from="1565518371271" duration="135000" />
+      <workItem from="1565518541951" duration="868000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4590000" />
+    <option name="totallyTimeSpent" value="5593000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="529" y="86" width="1223" height="813" extended-state="0" />
+    <frame x="236" y="95" width="1223" height="813" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21168502" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18454936" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36608344" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36477116" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -197,7 +200,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.3676681" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
@@ -221,12 +224,19 @@
     <entry file="file://$PROJECT_DIR$/Laboratory/test.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Laboratory/svm_data.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="201" selection-start-line="201" selection-end-line="201" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Laboratory/lab5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="325">
+          <caret line="46" column="18" lean-forward="true" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
           <folding>
-            <element signature="e#24#43#0" expanded="true" />
+            <element signature="e#24#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
